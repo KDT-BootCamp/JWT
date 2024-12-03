@@ -10,7 +10,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -27,7 +29,7 @@ public class MemberEntity implements UserDetails {
 
     @Id
     @GeneratedValue
-    @Column(name = "member_id", unique = true, nullable = false )
+    @Column(name = "member_id", updatable = false ,unique = true, nullable = false )
     private Long id ;
     
     @Column(nullable = false)
@@ -42,6 +44,8 @@ public class MemberEntity implements UserDetails {
 
     private String profileImg;
 
+
+    @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
 
