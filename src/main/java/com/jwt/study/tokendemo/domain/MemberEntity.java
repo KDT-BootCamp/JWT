@@ -42,7 +42,7 @@ public class MemberEntity implements UserDetails {
 
     private String nickname;
 
-    private String profileImg;
+    private String profile_img;
 
 
     @ElementCollection(fetch = FetchType.EAGER)
